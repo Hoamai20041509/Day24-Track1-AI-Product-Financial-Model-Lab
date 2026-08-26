@@ -5,6 +5,25 @@
 
 ---
 
+## 📝 Thông Tin Bài Nộp
+
+- **Họ và tên:** Trần Thị Hoa Mai
+- **MSHV:** 2A202601317
+- **Tên dự án:** Education AI Tutor
+- **Persona chính:** Sinh viên Việt Nam cần trợ lý AI hỗ trợ ôn tập, sinh câu hỏi và kiểm tra kiến thức.
+- **Mô hình doanh thu:** Hybrid Pricing — thuê bao cơ bản 80.000 VNĐ/tháng gồm quota AI tiêu chuẩn; phần sử dụng vượt quota được tính theo usage để bảo vệ biên lợi nhuận.
+- **File Excel:** `2A202601317_TranThiHoaMai_Day24.xlsx`
+
+### Investor Decision Note
+
+Education AI Tutor sử dụng mô hình Hybrid Pricing: phí thuê bao cơ bản 80.000 VNĐ/tháng bao gồm quota AI tiêu chuẩn, còn usage vượt quota được tính riêng để hạn chế rủi ro từ power users. ARPU Base 80.000 VNĐ được xem là giả thuyết giá thận trọng trước doanh thu overage. Mức này thấp hơn giá niêm yết Quizlet Plus Unlimited là 3,75 USD/tháng khi thanh toán năm, tạo khoảng giá phù hợp hơn cho thử nghiệm willingness-to-pay với sinh viên Việt Nam ([Quizlet, 2026](https://quizlet.com/upgrade?source=signup)). CAC Base 150.000 VNĐ giả định acquisition dựa trên social media, referral, cộng đồng sinh viên và campus ambassador, thay vì phụ thuộc hoàn toàn vào paid ads.
+
+Trong Base case, API cost là 8.800 VNĐ, infrastructure 5.000 VNĐ và AI Hidden Costs 10.000 VNĐ/user/tháng. Hidden Costs tương đương 113,6% API cost, cao hơn ngưỡng tối thiểu 30% của handbook, nhằm bao phủ labeling, evaluation set, Human QA, retraining khi chất lượng suy giảm và compliance. Tổng COGS 23.800 VNĐ tạo Gross Profit 56.200 VNĐ và Gross Margin 70,25%. Với churn 10%/tháng, LTV tính trên Gross Profit đạt 562.000 VNĐ; LTV/CAC đạt 3,75x và CAC Payback là 2,67 tháng, vượt hai benchmark của lab.
+
+Pessimistic áp dụng churn 15% và CAC 260.000 VNĐ, lần lượt bằng 1,5x và 1,73x Base; runway còn đúng 12 tháng. Nếu tín hiệu này xuất hiện, nhóm sẽ giảm paid acquisition, tăng referral, giới hạn heavy usage, chuyển truy vấn đơn giản sang model rẻ hơn và ưu tiên cải thiện retention. Nhóm cũng chuẩn bị phương án bridge financing trước tháng 10. Quyết định là triển khai pilot có kiểm soát và chỉ mở rộng khi cohort thực tế chứng minh churn giảm và CAC không vượt kế hoạch.
+
+---
+
 ## 🎯 1. Tiêu Đề & Mục Tiêu Tổng Quan (Header & Objectives)
 
 ### Mục Tiêu Đầu Ra (Outcomes & Objectives):
@@ -111,12 +130,12 @@ Track1-Day24-MHV-[MSSV]-[HoVaTen]/
 ```
 
 ### Pre-submission Checklist (Rà soát 6 bước trước khi nộp):
-- [ ] 1. Khai báo rõ Họ tên, MSSV và Tên dự án (nhóm Build Phase hoặc cá nhân) trong `README.md`.
-- [ ] 2. File Excel đã điền 100% ô màu vàng cả 3 kịch bản tại Tab 1.
-- [ ] 3. Đã đảm bảo `AI Hidden Costs >= 30% API Cost` (không để bằng 0).
-- [ ] 4. Tab 2 Base LTV/CAC > 3.0 và CAC Payback < 12 tháng (tính trên Gross Margin).
-- [ ] 5. Tab 3 khi đổi sang `Pessimistic` đảm bảo Runway ≥ 12 tháng (Cash Position không bị âm).
-- [ ] 6. Viết xong đoạn văn **Decision Note (200–300 từ)** bảo vệ mô hình trong `README.md`.
+- [x] 1. Khai báo rõ Họ tên, MSSV và Tên dự án (nhóm Build Phase hoặc cá nhân) trong `README.md`.
+- [x] 2. File Excel đã điền 100% ô màu vàng cả 3 kịch bản tại Tab 1.
+- [x] 3. Đã đảm bảo `AI Hidden Costs >= 30% API Cost` (không để bằng 0).
+- [x] 4. Tab 2 Base LTV/CAC > 3.0 và CAC Payback < 12 tháng (tính trên Gross Margin).
+- [x] 5. Tab 3 khi đổi sang `Pessimistic` đảm bảo Runway ≥ 12 tháng (Cash Position không bị âm trước tháng 13).
+- [x] 6. Viết xong đoạn văn **Decision Note (200–300 từ)** bảo vệ mô hình trong `README.md`.
 
 ---
 
