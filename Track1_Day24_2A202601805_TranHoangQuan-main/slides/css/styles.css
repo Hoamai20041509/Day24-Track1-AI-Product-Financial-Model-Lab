@@ -1,0 +1,96 @@
+/* Custom Styles for Track 1 Day 24 Lab Deck */
+@keyframes bgShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes hueLoop {
+  0% { filter: hue-rotate(0deg); }
+  100% { filter: hue-rotate(360deg); }
+}
+
+@keyframes drift1 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(10vw, 10vh) scale(1.1); }
+  66% { transform: translate(-10vw, 5vh) scale(0.9); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+@keyframes drift2 {
+  0% { transform: translate(0, 0) scale(1); }
+  33% { transform: translate(-10vw, -10vh) scale(0.9); }
+  66% { transform: translate(10vw, -15vh) scale(1.1); }
+  100% { transform: translate(0, 0) scale(1); }
+}
+
+.bg-live {
+  background: linear-gradient(-45deg, #0f172a, #1e1b4b, #311042, #0f172a);
+  background-size: 200% 200%;
+  animation: bgShift 30s ease-in-out infinite;
+}
+
+.blob-1 { animation: drift1 20s ease-in-out infinite; }
+.blob-2 { animation: drift2 25s ease-in-out infinite; }
+
+.glass-island {
+  box-shadow: 0 0 30px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05) inset;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-island:hover {
+  transform: translateX(-50%) scale(1.03) translateY(-2px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.9), 0 0 0 1px rgba(255,255,255,0.1) inset;
+  background: rgba(10,10,10,0.95);
+}
+
+.holographic-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0.01) 100%);
+  border: 1px solid rgba(255,255,255,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.holographic-card::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%; width: 50%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.05), transparent);
+  transform: skewX(-20deg);
+  transition: all 0.5s ease;
+}
+
+.holographic-card:hover::before {
+  left: 150%;
+}
+
+.slide-view {
+  display: none;
+  height: calc(100vh - 5rem);
+  width: 100%;
+  animation: fadeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.slide-view.active {
+  display: flex;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.985) translateY(6px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: rgba(0,0,0,0.2);
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: rgba(255,255,255,0.1);
+  border-radius: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: rgba(255,255,255,0.2);
+}

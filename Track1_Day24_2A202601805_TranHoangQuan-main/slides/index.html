@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="vi" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Track 1 - Day 24: AI Product Financial Model & Unit Economics Lab</title>
+  
+  <!-- Fonts: Space Grotesk & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300..700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Space Grotesk"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              bg: '#050505',
+              panel: '#0A0A0A',
+              border: '#ffffff15'
+            }
+          }
+        }
+      }
+    }
+  </script>
+  
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="bg-live text-slate-100 font-sans selection:bg-indigo-500 selection:text-white min-h-screen overflow-hidden relative">
+
+  <!-- Ambient Light Blobs -->
+  <div class="fixed top-1/4 left-1/4 w-96 h-96 bg-indigo-600/15 rounded-full blur-[120px] pointer-events-none blob-1"></div>
+  <div class="fixed bottom-1/4 right-1/4 w-96 h-96 bg-emerald-600/15 rounded-full blur-[120px] pointer-events-none blob-2"></div>
+
+  <!-- ================= TOP HEADER BAR ================= -->
+  <header class="h-16 border-b border-white/10 px-6 flex items-center justify-between bg-black/40 backdrop-blur-md relative z-40">
+    <div class="flex items-center gap-4">
+      <div class="flex items-center gap-2 bg-indigo-500/10 border border-indigo-500/30 px-3 py-1.5 rounded-full">
+        <span class="w-2 h-2 rounded-full bg-indigo-400 animate-pulse"></span>
+        <span class="text-xs font-mono text-indigo-300 font-bold uppercase tracking-wider">VinUni Codelab · Track 1</span>
+      </div>
+      <h1 class="text-sm font-semibold text-slate-200 hidden md:block">Day 24 — AI Product Financial Model & Unit Economics Lab</h1>
+    </div>
+
+    <!-- Navigation controls -->
+    <div class="flex items-center gap-3">
+      <div class="flex items-center gap-2 bg-black/50 border border-white/10 px-3 py-1 rounded-xl text-xs font-mono text-slate-400">
+        <span>SLIDE</span>
+        <span class="text-white font-bold" id="current-slide-num">1</span>
+        <span>/</span>
+        <span id="total-slide-num">8</span>
+      </div>
+      <button id="btn-prev" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 active:scale-95 transition text-slate-300 hover:text-white">
+        <i data-lucide="chevron-left" class="w-4 h-4"></i>
+      </button>
+      <button id="btn-next" class="p-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 border border-indigo-400/30 active:scale-95 transition text-white shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+        <i data-lucide="chevron-right" class="w-4 h-4"></i>
+      </button>
+      <button id="btn-fullscreen" class="p-2 rounded-xl bg-white/5 border border-white/10 hover:bg-white/10 active:scale-95 transition text-slate-400 hover:text-white hidden sm:flex">
+        <i data-lucide="maximize-2" class="w-4 h-4"></i>
+      </button>
+    </div>
+  </header>
+
+  <!-- ================= LEFT FLOATING SIDEBAR NAVIGATION ================= -->
+  <aside class="fixed left-6 top-1/2 -translate-y-1/2 z-40 flex flex-col gap-2 group/sidebar">
+    <div id="step-dots-container" class="flex flex-col gap-2 p-2 rounded-2xl bg-black/60 backdrop-blur-xl border border-white/10 shadow-2xl transition-all duration-300">
+      <!-- Generated via slides.js -->
+    </div>
+  </aside>
+
+  <!-- ================= MAIN SLIDE CONTAINER ================= -->
+  <main class="relative z-10 h-[calc(100vh-4rem)] w-full max-w-7xl mx-auto px-6 pt-4 pb-24 overflow-y-auto custom-scrollbar">
+
+    <!-- ================= SLIDE 0: HERO BÌA ================= -->
+    <div class="slide-view active flex-col justify-center items-center h-full text-center py-10">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-6 uppercase tracking-widest">
+        <i data-lucide="calculator" class="w-4 h-4 text-indigo-400"></i> 90 Phút · Bài tập Thực hành Cá nhân
+      </div>
+      <h1 class="text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 max-w-4xl leading-tight">
+        Track 1 - Day 24<br/>
+        <span class="bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400">AI Product Financial Model Lab</span>
+      </h1>
+      <p class="text-lg text-slate-300 max-w-2xl mb-10 leading-relaxed">
+        Từ Giả định Đầu vào → Kiểm chứng Unit Economics (LTV/CAC > 3.0) → Stress-test 3 Kịch bản trên Excel để chứng minh sản phẩm AI của bạn sống sót được ≥ 12 tháng!
+      </p>
+
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-3xl w-full mb-10">
+        <div class="holographic-card p-5 rounded-2xl text-left bg-black/40">
+          <div class="text-xs font-mono text-indigo-400 font-bold uppercase mb-1">Mô Hình Thu Tiền</div>
+          <div class="text-white font-semibold text-sm">Hybrid Pricing (Base + Usage)</div>
+        </div>
+        <div class="holographic-card p-5 rounded-2xl text-left bg-black/40">
+          <div class="text-xs font-mono text-emerald-400 font-bold uppercase mb-1">Sức Khỏe Đơn Vị</div>
+          <div class="text-white font-semibold text-sm">LTV/CAC > 3.0 & Payback < 12m</div>
+        </div>
+        <div class="holographic-card p-5 rounded-2xl text-left bg-black/40">
+          <div class="text-xs font-mono text-purple-400 font-bold uppercase mb-1">Kịch Bản Sinh Tồn</div>
+          <div class="text-white font-semibold text-sm">Pessimistic Runway ≥ 12 tháng</div>
+        </div>
+      </div>
+
+      <button onclick="window.labTimer.start(); showSlide(1);" class="px-8 py-4 rounded-2xl bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-bold text-base shadow-[0_0_30px_rgba(99,102,241,0.5)] active:scale-95 transition-all flex items-center gap-3">
+        <i data-lucide="play" class="w-5 h-5 fill-current"></i> Bắt đầu Bài Lab (90:00)
+      </button>
+    </div>
+
+    <!-- ================= SLIDE 1: ROADMAP 5 PHASE ================= -->
+    <div class="slide-view flex-col justify-center h-full py-6">
+      <div class="mb-6">
+        <span class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold">Lộ Trình Thực Hành</span>
+        <h2 class="text-3xl font-bold text-white mt-1">Sơ đồ 5 Phase Hoàn Thành Bài Lab</h2>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+        <!-- Phase 0 -->
+        <div onclick="showSlide(2)" class="holographic-card p-5 rounded-2xl bg-black/40 hover:border-indigo-500/50 cursor-pointer group transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono text-indigo-400 font-bold">PHASE 0</span>
+            <span class="text-xs font-mono text-slate-400">10 Min</span>
+          </div>
+          <h3 class="text-white font-bold text-sm mb-2 group-hover:text-indigo-300">Chốt Phạm Vi & Pricing</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Persona, TAM và mô hình Hybrid Pricing chống bẫy lỗ.</p>
+        </div>
+
+        <!-- Phase 1 -->
+        <div onclick="showSlide(3)" class="holographic-card p-5 rounded-2xl bg-black/40 hover:border-indigo-500/50 cursor-pointer group transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono text-indigo-400 font-bold">PHASE 1</span>
+            <span class="text-xs font-mono text-slate-400">20 Min</span>
+          </div>
+          <h3 class="text-white font-bold text-sm mb-2 group-hover:text-indigo-300">Giả Định Đầu Vào (Tab 1)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Điền 100% ô màu vàng & AI Hidden Costs (≥30% API).</p>
+        </div>
+
+        <!-- Phase 2 -->
+        <div onclick="showSlide(4)" class="holographic-card p-5 rounded-2xl bg-black/40 hover:border-emerald-500/50 cursor-pointer group transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono text-emerald-400 font-bold">PHASE 2</span>
+            <span class="text-xs font-mono text-slate-400">15 Min</span>
+          </div>
+          <h3 class="text-white font-bold text-sm mb-2 group-hover:text-emerald-300">Unit Economics (Tab 2)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Kiểm chứng LTV/CAC > 3.0 và CAC Payback < 12m.</p>
+        </div>
+
+        <!-- Phase 3 -->
+        <div onclick="showSlide(5)" class="holographic-card p-5 rounded-2xl bg-black/40 hover:border-amber-500/50 cursor-pointer group transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono text-amber-400 font-bold">PHASE 3</span>
+            <span class="text-xs font-mono text-slate-400">20 Min</span>
+          </div>
+          <h3 class="text-white font-bold text-sm mb-2 group-hover:text-amber-300">Stress-test P&L (Tab 3)</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Đổi kịch bản Pessimistic, đảm bảo Runway ≥ 12 tháng.</p>
+        </div>
+
+        <!-- Phase 4 -->
+        <div onclick="showSlide(6)" class="holographic-card p-5 rounded-2xl bg-black/40 hover:border-purple-500/50 cursor-pointer group transition-all">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-mono text-purple-400 font-bold">PHASE 4</span>
+            <span class="text-xs font-mono text-slate-400">25 Min</span>
+          </div>
+          <h3 class="text-white font-bold text-sm mb-2 group-hover:text-purple-300">Decision Note & Nộp Bài</h3>
+          <p class="text-xs text-slate-400 leading-relaxed">Viết lập luận bảo vệ giả định & đẩy repo cá nhân.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 2: PHASE 0 (10 MIN) ================= -->
+    <div class="slide-view flex-col justify-center h-full py-4">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold">Phase 0 · 10 Phút</span>
+          <h2 class="text-2xl font-bold text-white">Chốt Phạm Vi Sản Phẩm & Mô Hình Pricing</h2>
+        </div>
+
+        <!-- Per-step Timer Widget -->
+        <div id="step-timer-widget-0" class="flex items-center gap-3 bg-black/50 border border-white/10 px-4 py-2 rounded-2xl">
+          <svg class="w-10 h-10 -rotate-90">
+            <circle cx="20" cy="20" r="16" stroke="#ffffff10" stroke-width="3" fill="transparent"/>
+            <circle class="timer-circle-bar" cx="20" cy="20" r="16" stroke="#6366f1" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="0"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Thời gian Phase</span>
+            <span class="step-time-text text-lg font-bold font-mono text-white">10:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="holographic-card p-6 rounded-2xl bg-black/50 border-indigo-500/20">
+          <h3 class="text-indigo-400 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i data-lucide="target" class="w-4 h-4"></i> 4 Thông Tin Cốt Lõi Cần Khai Báo
+          </h3>
+          <div id="desc-step-0" class="text-slate-300 text-sm"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="holographic-card p-6 rounded-2xl bg-indigo-950/20 border-indigo-500/30">
+            <h3 class="text-indigo-300 font-bold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="shield-alert" class="w-4 h-4 text-indigo-400"></i> Decision: Lựa chọn Mô hình Pricing
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Với sản phẩm AI có chi phí COGS cao (40-60%), mô hình <strong>Hybrid Pricing (Phí cố định + Phí overage theo usage)</strong> là an toàn nhất để bảo vệ lợi nhuận gộp trước các Power Users.
+            </p>
+          </div>
+
+          <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+            <h3 class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4"></i> Gate 0 Checkpoint
+            </h3>
+            <div id="checkpoint-step-0" class="text-xs text-slate-300 space-y-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 3: PHASE 1 (20 MIN) ================= -->
+    <div class="slide-view flex-col justify-center h-full py-4">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-indigo-400 font-bold">Phase 1 · 20 Phút</span>
+          <h2 class="text-2xl font-bold text-white">Giả Định Đầu Vào (Tab 1 Assumptions)</h2>
+        </div>
+
+        <!-- Per-step Timer Widget -->
+        <div id="step-timer-widget-1" class="flex items-center gap-3 bg-black/50 border border-white/10 px-4 py-2 rounded-2xl">
+          <svg class="w-10 h-10 -rotate-90">
+            <circle cx="20" cy="20" r="16" stroke="#ffffff10" stroke-width="3" fill="transparent"/>
+            <circle class="timer-circle-bar" cx="20" cy="20" r="16" stroke="#6366f1" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="0"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Thời gian Phase</span>
+            <span class="step-time-text text-lg font-bold font-mono text-white">20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="holographic-card p-6 rounded-2xl bg-black/50 border-indigo-500/20">
+          <h3 class="text-indigo-400 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i data-lucide="edit-3" class="w-4 h-4"></i> Điền 100% Ô Màu Vàng Cả 3 Kịch Bản
+          </h3>
+          <div id="desc-step-1" class="text-slate-300 text-sm"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="holographic-card p-6 rounded-2xl bg-rose-950/20 border-rose-500/40">
+            <h3 class="text-rose-400 font-bold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="alert-triangle" class="w-4 h-4"></i> Caution: Rủi ro Chi phí ẩn (AI Hidden Costs)
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed">
+              Hầu hết founder AI thất bại vì chỉ tính tiền API OpenAI mà quên tiền <strong>Data Labeling, Model Retraining (~20%/năm) và Human QA</strong>. Bắt buộc điền <code>AI Hidden Costs ≥ 30% API Cost</code>! Bỏ trống sẽ bị trừ 10 điểm rubric.
+            </p>
+          </div>
+
+          <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+            <h3 class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4"></i> Gate 1 Checkpoint
+            </h3>
+            <div id="checkpoint-step-1" class="text-xs text-slate-300 space-y-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 4: PHASE 2 (15 MIN) ================= -->
+    <div class="slide-view flex-col justify-center h-full py-4">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-emerald-400 font-bold">Phase 2 · 15 Phút</span>
+          <h2 class="text-2xl font-bold text-white">Kiểm Chứng Unit Economics (Tab 2)</h2>
+        </div>
+
+        <!-- Per-step Timer Widget -->
+        <div id="step-timer-widget-2" class="flex items-center gap-3 bg-black/50 border border-white/10 px-4 py-2 rounded-2xl">
+          <svg class="w-10 h-10 -rotate-90">
+            <circle cx="20" cy="20" r="16" stroke="#ffffff10" stroke-width="3" fill="transparent"/>
+            <circle class="timer-circle-bar" cx="20" cy="20" r="16" stroke="#10b981" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="0"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Thời gian Phase</span>
+            <span class="step-time-text text-lg font-bold font-mono text-white">15:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+          <h3 class="text-emerald-400 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-4 h-4"></i> Kiểm Tra Thước Đo Sức Khỏe Đơn Vị
+          </h3>
+          <div id="desc-step-2" class="text-slate-300 text-sm"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="holographic-card p-6 rounded-2xl bg-emerald-950/20 border-emerald-500/40">
+            <h3 class="text-emerald-300 font-bold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="award" class="w-4 h-4 text-emerald-400"></i> Tiêu Chuẩn Vàng Của VC
+            </h3>
+            <ul class="text-xs text-slate-300 space-y-2">
+              <li class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                <span>LTV / CAC Ratio</span>
+                <span class="font-mono text-emerald-400 font-bold">> 3.0</span>
+              </li>
+              <li class="flex items-center justify-between border-b border-white/10 pb-1.5">
+                <span>CAC Payback Period</span>
+                <span class="font-mono text-emerald-400 font-bold">< 12 tháng</span>
+              </li>
+              <li class="flex items-center justify-between">
+                <span>Gross Margin %</span>
+                <span class="font-mono text-emerald-400 font-bold">≥ 50% - 60%</span>
+              </li>
+            </ul>
+          </div>
+
+          <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+            <h3 class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4"></i> Gate 2 Checkpoint
+            </h3>
+            <div id="checkpoint-step-2" class="text-xs text-slate-300 space-y-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 5: PHASE 3 (20 MIN) ================= -->
+    <div class="slide-view flex-col justify-center h-full py-4">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-amber-400 font-bold">Phase 3 · 20 Phút</span>
+          <h2 class="text-2xl font-bold text-white">Stress-test P&L 3 Kịch Bản (Tab 3)</h2>
+        </div>
+
+        <!-- Per-step Timer Widget -->
+        <div id="step-timer-widget-3" class="flex items-center gap-3 bg-black/50 border border-white/10 px-4 py-2 rounded-2xl">
+          <svg class="w-10 h-10 -rotate-90">
+            <circle cx="20" cy="20" r="16" stroke="#ffffff10" stroke-width="3" fill="transparent"/>
+            <circle class="timer-circle-bar" cx="20" cy="20" r="16" stroke="#f59e0b" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="0"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Thời gian Phase</span>
+            <span class="step-time-text text-lg font-bold font-mono text-white">20:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="holographic-card p-6 rounded-2xl bg-black/50 border-amber-500/20">
+          <h3 class="text-amber-400 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i data-lucide="bar-chart-3" class="w-4 h-4"></i> Kiểm Tra Dòng Tiền & ROI 24 Tháng
+          </h3>
+          <div id="desc-step-3" class="text-slate-300 text-sm"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="holographic-card p-6 rounded-2xl bg-amber-950/20 border-amber-500/40">
+            <h3 class="text-amber-300 font-bold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="activity" class="w-4 h-4 text-amber-400"></i> Pessimistic Stress-Test Rule
+            </h3>
+            <p class="text-xs text-slate-300 leading-relaxed mb-3">
+              Khi đổi ô C4 sang <strong>Pessimistic</strong> (Churn 1.5x, CAC 1.5x), dòng tiền mặt tích lũy (Cash Position) từ M1 đến M12 không được âm.
+            </p>
+            <div class="p-3 bg-black/60 rounded-xl border border-amber-500/30 text-xs font-mono text-amber-300">
+              ✓ Yêu cầu: Pessimistic Runway ≥ 12 tháng
+            </div>
+          </div>
+
+          <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+            <h3 class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4"></i> Gate 3 Checkpoint
+            </h3>
+            <div id="checkpoint-step-3" class="text-xs text-slate-300 space-y-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 6: PHASE 4 (25 MIN) ================= -->
+    <div class="slide-view flex-col justify-center h-full py-4">
+      <div class="flex items-center justify-between mb-4">
+        <div>
+          <span class="text-xs font-mono uppercase tracking-widest text-purple-400 font-bold">Phase 4 · 25 Phút</span>
+          <h2 class="text-2xl font-bold text-white">Viết Decision Note & Hoàn Thiện Repo Nộp Bài</h2>
+        </div>
+
+        <!-- Per-step Timer Widget -->
+        <div id="step-timer-widget-4" class="flex items-center gap-3 bg-black/50 border border-white/10 px-4 py-2 rounded-2xl">
+          <svg class="w-10 h-10 -rotate-90">
+            <circle cx="20" cy="20" r="16" stroke="#ffffff10" stroke-width="3" fill="transparent"/>
+            <circle class="timer-circle-bar" cx="20" cy="20" r="16" stroke="#a855f7" stroke-width="3" fill="transparent" stroke-dasharray="100" stroke-dashoffset="0"/>
+          </svg>
+          <div class="flex flex-col">
+            <span class="text-[10px] font-mono text-slate-400 uppercase font-bold">Thời gian Phase</span>
+            <span class="step-time-text text-lg font-bold font-mono text-white">25:00</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <div class="holographic-card p-6 rounded-2xl bg-black/50 border-purple-500/20">
+          <h3 class="text-purple-400 font-bold text-sm uppercase tracking-wider mb-4 flex items-center gap-2">
+            <i data-lucide="file-text" class="w-4 h-4"></i> Cấu Trúc Decision Note & Quy Cách Nộp Bài
+          </h3>
+          <div id="desc-step-4" class="text-slate-300 text-sm"></div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="holographic-card p-6 rounded-2xl bg-purple-950/20 border-purple-500/40">
+            <h3 class="text-purple-300 font-bold text-sm uppercase tracking-wider mb-2 flex items-center gap-2">
+              <i data-lucide="folder-git2" class="w-4 h-4 text-purple-400"></i> Quy Ước Thư Mục Nộp Bài Cá Nhân
+            </h3>
+            <pre class="bg-black/60 p-3 rounded-xl text-xs font-mono text-emerald-400 border border-white/10 overflow-x-auto">
+Track1_Day24_MHV_HoVaTen/
+├── README.md               # Decision Note + Họ tên & MSSV
+└── [HoVaTen]_Day24.xlsx    # File Excel 3 Tabs hoàn chỉnh
+            </pre>
+          </div>
+
+          <div class="holographic-card p-6 rounded-2xl bg-black/50 border-emerald-500/20">
+            <h3 class="text-emerald-400 font-bold text-xs uppercase tracking-wider mb-3 flex items-center gap-2">
+              <i data-lucide="check-square" class="w-4 h-4"></i> Gate 4 Checkpoint
+            </h3>
+            <div id="checkpoint-step-4" class="text-xs text-slate-300 space-y-2"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= SLIDE 7: END / TỔNG KẾT ================= -->
+    <div class="slide-view flex-col justify-center items-center h-full w-full text-center pb-20">
+      <div class="relative z-10 max-w-3xl">
+         <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-emerald-500/10 border border-emerald-500/30 mb-6 shadow-[0_0_30px_rgba(16,185,129,0.3)]">
+            <i data-lucide="trophy" class="w-10 h-10 text-emerald-400"></i>
+         </div>
+         <h2 class="text-4xl font-extrabold text-white tracking-tight mb-3">Lab Day 24 Completed!</h2>
+         <p class="text-lg text-slate-300 mb-8">Bạn đã hoàn thành 90 phút xây dựng Mô hình Tài chính & Stress-test Sinh tồn cho AI Startup.</p>
+         
+         <div class="holographic-card p-6 rounded-3xl text-left border-emerald-500/30 bg-black/60 mb-6">
+            <h3 class="text-emerald-400 font-bold text-xs font-mono uppercase tracking-widest flex items-center gap-2 mb-4">
+               <i data-lucide="check-circle-2" class="w-4 h-4"></i> Rubric Đánh Giá 100 Điểm (5 Gates)
+            </h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-slate-300">
+               <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                 <strong class="text-white block mb-1">1. Giả định Tab 1 (30đ):</strong> Điền 100% ô màu vàng, Hidden Costs ≥ 30% API cost.
+               </div>
+               <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                 <strong class="text-white block mb-1">2. AI Cost Awareness (25đ):</strong> Tính đủ Labeling, Retraining, QA & Compliance.
+               </div>
+               <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                 <strong class="text-white block mb-1">3. Unit Economics (20đ):</strong> LTV tính trên Gross Margin, Base LTV/CAC > 3.0.
+               </div>
+               <div class="p-3 bg-white/5 rounded-xl border border-white/5">
+                 <strong class="text-white block mb-1">4. Stress-testing (15đ):</strong> Pessimistic Churn/CAC 1.5x, Runway ≥ 12m.
+               </div>
+            </div>
+         </div>
+         
+         <div class="text-xs text-slate-400 font-mono">
+           Nhớ nộp repo cá nhân đúng thời hạn trước 13:00!
+         </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ================= DYNAMIC ISLAND (GLOBAL CONTROL) ================= -->
+  <div class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 glass-island flex items-center gap-5 px-6 py-3 rounded-full bg-[#050505]/90 backdrop-blur-xl border border-white/10 transition-all duration-300">
+     <!-- Step Name -->
+     <div class="flex flex-col">
+       <span class="text-[9px] font-mono uppercase tracking-widest text-slate-500 font-bold" id="header-step-label">PHASE 0</span>
+       <span class="text-sm font-bold text-white font-mono" id="header-step-timer">10:00</span>
+     </div>
+
+     <div class="w-px h-8 bg-white/10"></div>
+
+     <!-- Total Time -->
+     <div class="flex flex-col">
+       <span class="text-[9px] font-mono uppercase tracking-widest text-slate-500 font-bold">TOTAL</span>
+       <span class="text-sm font-bold text-emerald-400 font-mono" id="header-total-timer">90:00</span>
+     </div>
+
+     <div class="w-px h-8 bg-white/10"></div>
+
+     <!-- Controls -->
+     <div class="flex items-center gap-2 relative">
+       <button id="btn-global-timer-toggle" class="w-10 h-10 rounded-full bg-indigo-600 hover:bg-indigo-500 text-white active:scale-95 transition-all flex items-center justify-center shadow-[0_0_15px_rgba(99,102,241,0.4)]">
+         <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+       </button>
+       <button id="btn-global-timer-reset" class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white active:scale-95 transition-colors flex items-center justify-center">
+         <i data-lucide="rotate-ccw" class="w-4 h-4"></i>
+       </button>
+       
+       <!-- Jump Menu -->
+       <div class="relative group">
+         <button class="w-10 h-10 rounded-full bg-white/10 hover:bg-white/20 text-white active:scale-95 transition-colors flex items-center justify-center">
+           <i data-lucide="list-ordered" class="w-4 h-4"></i>
+         </button>
+         <div class="absolute bottom-full left-1/2 -translate-x-1/2 pb-3 w-64 opacity-0 translate-y-4 pointer-events-none group-hover:opacity-100 group-hover:translate-y-0 group-hover:pointer-events-auto transition-all duration-300 z-50">
+           <div class="bg-[#0A0A0A] border border-white/10 rounded-2xl p-2 shadow-2xl">
+             <div class="text-[10px] font-mono text-slate-500 px-3 py-2 uppercase tracking-widest font-bold">Nhảy Đến Phase</div>
+             <div class="max-h-64 overflow-y-auto custom-scrollbar flex flex-col gap-1 p-1">
+               <button onclick="jumpToStep(0)" class="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-white/5 flex justify-between text-slate-300 items-center">
+                 <span><span class="text-indigo-400 font-mono mr-1">0.</span> Chốt Phạm Vi & Pricing</span>
+                 <span class="font-mono text-slate-500">10m</span>
+               </button>
+               <button onclick="jumpToStep(1)" class="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-white/5 flex justify-between text-slate-300 items-center">
+                 <span><span class="text-indigo-400 font-mono mr-1">1.</span> Giả Định Đầu Vào (Tab 1)</span>
+                 <span class="font-mono text-slate-500">20m</span>
+               </button>
+               <button onclick="jumpToStep(2)" class="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-white/5 flex justify-between text-slate-300 items-center">
+                 <span><span class="text-emerald-400 font-mono mr-1">2.</span> Unit Economics (Tab 2)</span>
+                 <span class="font-mono text-slate-500">15m</span>
+               </button>
+               <button onclick="jumpToStep(3)" class="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-white/5 flex justify-between text-slate-300 items-center">
+                 <span><span class="text-amber-400 font-mono mr-1">3.</span> Stress-test P&L (Tab 3)</span>
+                 <span class="font-mono text-slate-500">20m</span>
+               </button>
+               <button onclick="jumpToStep(4)" class="w-full text-left px-3 py-2 rounded-xl text-xs hover:bg-white/5 flex justify-between text-slate-300 items-center">
+                 <span><span class="text-purple-400 font-mono mr-1">4.</span> Decision Note & Nộp Bài</span>
+                 <span class="font-mono text-slate-500">25m</span>
+               </button>
+             </div>
+           </div>
+         </div>
+       </div>
+     </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/data.js"></script>
+  <script src="js/timer.js"></script>
+  <script src="js/slides.js"></script>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>
